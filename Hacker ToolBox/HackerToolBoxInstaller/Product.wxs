@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Wix xmlns="http://schemas.microsoft.com/wix/2006/wi">
+  <Product Id="*" Name="Hacker ToolBox" Language="1033" Version="1.0.0.0"
+           Manufacturer="YourCompany" UpgradeCode="eea0d2a3-2db1-48c8-b90f-049e4c3bc756">
+    <Package InstallerVersion="500" Compressed="yes" InstallScope="perMachine" />
+
+    <MajorUpgrade DowngradeErrorMessage="A newer version of Hacker ToolBox is already installed." />
+    <MediaTemplate />
+
+    <!-- Icon for shortcut -->
+    <Icon Id="AppIcon" SourceFile="C:\Program Files\Hacker ToolBox\icon.ico" />
+
+    <!-- License file -->
+    <WixVariable Id="WixUILicenseRtf" Value="License.rtf" />
+
+    <Directory Id="TARGETDIR" Name="SourceDir">
+      <Directory Id="ProgramFilesFolder">
+        <Directory Id="INSTALLFOLDER" Name="Hacker ToolBox">
+          <!-- Executable component -->
+          <Component Id="MainExecutable" Guid="7a71fadb-945a-4b56-a0e0-b3894d5cadc1">
+            <File Id="HackerMenuExe" Source="C:\Program Files\Hacker ToolBox\Hacker_Menu.exe" KeyPath="yes" />
+          </Component>
+        </Directory>
+      </Directory>
+
+      <Directory Id="DesktopFolder" Name="Desktop">
+        <!-- Shortcut component -->
+        <Component Id="DesktopShortcutComponent" Guid="3d2e4c1e-4386-4356-82cd-19cbc15b6f1f">
+          <Shortcut Id="DesktopShortcut"
+                    Directory="DesktopFolder"
+                    Name="Hacker ToolBox"
+                    Description="Launch Hacker ToolBox"
+                    Target="[INSTALLFOLDER]Hacker_Menu.exe"
+                    WorkingDirectory="INSTALLFOLDER"
+                    Icon="AppIcon"
+                    Advertise="no" />
+          <!-- Registry key as KeyPath -->
+          <RegistryValue Root="HKCU" Key="Software\HackerToolBox" Name="Installed" Type="integer" Value="1" KeyPath="yes" />
+        </Component>
+      </Directory>
+    </Directory>
+
+    <Feature Id="ProductFeature" Title="Hacker ToolBox" Level="1">
+      <ComponentRef Id="MainExecutable" />
+      <ComponentRef Id="DesktopShortcutComponent" />
+    </Feature>
+
+    <!-- Use built-in UI with license dialog -->
+    <UIRef Id="WixUI_Minimal" />
+  </Product>
+</Wix>
