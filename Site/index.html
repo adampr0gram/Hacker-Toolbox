@@ -1,3 +1,10 @@
+Thanks for catching that — let me finish the full code properly so you have a complete, uncluttered download page with the softer warning text included.
+
+---
+
+### Complete `index.html`
+
+```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -15,9 +22,10 @@
       --accent: #00d084;
       --accent-2: #5b9dff;
       --border: #1f2a36;
-      --danger: #ff5470;
-      --link: #c0cad6;       /* softer link color */
-      --link-hover: #00d084; /* accent green on hover */
+      --warn: #e07b7b;       /* softer warning color */
+      --warn-bg: rgba(224, 123, 123, 0.08);
+      --link: #c0cad6;
+      --link-hover: #00d084;
     }
     * { box-sizing: border-box; }
     body {
@@ -25,7 +33,7 @@
       font-family: Inter, system-ui, sans-serif;
       background: radial-gradient(1000px 600px at 20% 0%, #0e1522 0%, var(--bg) 60%), var(--bg);
       color: var(--text);
-      line-height: 1.55;
+      line-height: 1.65;
     }
     header {
       padding: 28px 24px;
@@ -47,10 +55,10 @@
       background: var(--card);
       border: 1px solid var(--border);
       border-radius: 14px;
-      padding: 22px;
+      padding: 28px;
       box-shadow: 0 10px 30px rgba(0,0,0,0.25);
     }
-    .row { display: grid; grid-template-columns: 1.2fr 0.8fr; gap: 18px; }
+    .row { display: grid; grid-template-columns: 1.2fr 0.8fr; gap: 24px; }
     @media (max-width: 840px) { .row { grid-template-columns: 1fr; } }
     .btn {
       display: inline-flex; align-items: center; gap: 10px;
@@ -67,15 +75,23 @@
     .meta .badge {
       padding: 6px 10px; border: 1px solid var(--border); border-radius: 999px; background: rgba(255,255,255,0.02);
     }
-    h2 { font-size: 1.25rem; margin: 0 0 8px; }
+    h2 { font-size: 1.25rem; margin: 24px 0 12px; }
     code, pre { background: #0b111a; color: #cde1ff; border: 1px solid #162234; border-radius: 8px; }
     code { padding: 2px 6px; }
     pre { padding: 14px; overflow: auto; }
     footer { margin-top: 40px; padding: 24px; border-top: 1px solid var(--border); color: var(--muted); font-size: 0.95rem; }
-    .danger { color: var(--danger); }
+    .warning {
+      color: var(--warn);
+      background: var(--warn-bg);
+      border-left: 3px solid var(--warn);
+      padding: 8px 12px;
+      border-radius: 6px;
+      font-size: 0.95rem;
+      font-style: italic;
+      margin: 16px 0;
+    }
     .list { margin: 0; padding-left: 18px; }
-    .list li { margin: 6px 0; }
-    /* Custom link style */
+    .list li { margin: 10px 0; }
     a { color: var(--link); text-decoration: none; }
     a:hover { color: var(--link-hover); text-decoration: underline; }
   </style>
@@ -104,13 +120,14 @@
           <span class="badge">Installer (.msi)</span>
           <span class="badge">Direct download</span>
         </div>
-        <p class="danger">If SmartScreen warns you, verify the checksum below and proceed only if it matches.</p>
 
-        <h2 style="margin-top:18px;">Verify integrity</h2>
+        <p class="warning">If SmartScreen warns you, verify the checksum below and proceed only if it matches.</p>
+
+        <h2>Verify integrity</h2>
         <pre>CertUtil -hashfile HackerToolBox.msi SHA256</pre>
         <p><strong>Expected SHA‑256:</strong> <code>REPLACE_WITH_REAL_SHA256</code></p>
 
-        <h2 style="margin-top:18px;">Release notes</h2>
+        <h2>Release notes</h2>
         <ul class="list">
           <li><strong>Overview:</strong> Initial packaged installer for Hacker Toolbox.</li>
           <li><strong>Fixes:</strong> —</li>
@@ -126,14 +143,14 @@
           <li><strong>Repo root:</strong> <a href="https://github.com/adampr0gram/Hacker-Toolbox">GitHub repository</a></li>
         </ul>
 
-        <h2 style="margin-top:14px;">System requirements</h2>
+        <h2>System requirements</h2>
         <ul class="list">
           <li><strong>OS:</strong> Windows 10 or newer</li>
           <li><strong>Privileges:</strong> Admin rights recommended</li>
           <li><strong>Disk space:</strong> 200 MB free</li>
         </ul>
 
-        <h2 style="margin-top:14px;">Troubleshooting</h2>
+        <h2>Troubleshooting</h2>
         <ul class="list">
           <li><strong>Checksum mismatch:</strong> Redownload; do not run the MSI.</li>
           <li><strong>Blocked by AV:</strong> Whitelist only if checksum matches.</li>
@@ -144,5 +161,4 @@
   </main>
 
   <footer class="container">
-    <div>© <span id="
-
+    <div>© <span
