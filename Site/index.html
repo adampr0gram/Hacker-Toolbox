@@ -15,7 +15,7 @@
       --accent: #00d084;
       --accent-2: #5b9dff;
       --border: #1f2a36;
-      --warn: #e07b7b;       /* softer warning color */
+      --warn: #e07b7b;
       --warn-bg: rgba(224, 123, 123, 0.08);
       --link: #c0cad6;
       --link-hover: #00d084;
@@ -60,13 +60,24 @@
       color: #00140d; background: var(--accent);
       box-shadow: 0 6px 20px rgba(0, 208, 132, 0.35);
       transition: transform 120ms ease, box-shadow 120ms ease;
+      margin-bottom: 16px;
     }
     .btn:hover { transform: translateY(-1px); box-shadow: 0 10px 26px rgba(0, 208, 132, 0.45); }
     .btn-secondary { background: transparent; color: var(--text); border: 1px solid var(--border); }
     .btn-secondary:hover { background: rgba(255,255,255,0.03); }
-    .meta { display: flex; gap: 10px; flex-wrap: wrap; color: var(--muted); font-size: 0.95rem; }
+    .meta {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      margin-bottom: 16px;
+    }
     .meta .badge {
-      padding: 6px 10px; border: 1px solid var(--border); border-radius: 999px; background: rgba(255,255,255,0.02);
+      font-size: 0.85rem;
+      padding: 4px 10px;
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      background: rgba(255,255,255,0.04);
+      color: var(--muted);
     }
     h2 { font-size: 1.25rem; margin: 24px 0 12px; }
     code, pre { background: #0b111a; color: #cde1ff; border: 1px solid #162234; border-radius: 8px; }
@@ -103,20 +114,19 @@
     <p class="subtitle">Get the latest Windows installer. Verify the checksum, review release notes, and you’re good to go.</p>
 
     <section class="row">
-<div class="card">
-  <h2>Installer</h2>
-  <a class="btn" href="https://github.com/adampr0gram/Hacker-Toolbox/raw/main/HackerToolBox.msi" download>
-    Download MSI
-  </a>
+      <div class="card">
+        <h2>Installer</h2>
+        <a class="btn" href="https://github.com/adampr0gram/Hacker-Toolbox/raw/main/HackerToolBox.msi" download>
+          Download MSI
+        </a>
 
-  <div class="meta">
-    <span class="badge">Windows</span>
-    <span class="badge">Installer (.msi)</span>
-    <span class="badge">Direct download</span>
-  </div>
+        <div class="meta">
+          <span class="badge">Windows</span>
+          <span class="badge">Installer (.msi)</span>
+          <span class="badge">Direct download</span>
+        </div>
 
-  <p class="warning">If SmartScreen warns you, verify the checksum below and proceed only if it matches.</p>
-  
+        <p class="warning">If SmartScreen warns you, verify the checksum below and proceed only if it matches.</p>
 
         <h2>Verify integrity</h2>
         <pre>CertUtil -hashfile HackerToolBox.msi SHA256</pre>
@@ -149,6 +159,11 @@
         <ul class="list">
           <li><strong>Checksum mismatch:</strong> Redownload; do not run the MSI.</li>
           <li><strong>Blocked by AV:</strong> Whitelist only if checksum matches.</li>
+          <li><strong>Install fails:</strong> Run as Administrator; check Windows Installer service.</
+                    <h2>Troubleshooting</h2>
+        <ul class="list">
+          <li><strong>Checksum mismatch:</strong> Redownload; do not run the MSI.</li>
+          <li><strong>Blocked by AV:</strong> Whitelist only if checksum matches.</li>
           <li><strong>Install fails:</strong> Run as Administrator; check Windows Installer service.</li>
         </ul>
       </aside>
@@ -156,5 +171,12 @@
   </main>
 
   <footer class="container">
-    <div>© <span
+    <div>© <span id="year"></span> Hacker Toolbox</div>
+  </footer>
 
+  <script>
+    // Set footer year dynamically
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
