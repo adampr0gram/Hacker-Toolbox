@@ -1,10 +1,3 @@
-Thanks for catching that — let me finish the full code properly so you have a complete, uncluttered download page with the softer warning text included.
-
----
-
-### Complete `index.html`
-
-```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -110,18 +103,20 @@ Thanks for catching that — let me finish the full code properly so you have a 
     <p class="subtitle">Get the latest Windows installer. Verify the checksum, review release notes, and you’re good to go.</p>
 
     <section class="row">
-      <div class="card">
-        <h2>Installer</h2>
-        <a class="btn" href="https://github.com/adampr0gram/Hacker-Toolbox/raw/main/HackerToolBox.msi" download>
-          Download MSI
-        </a>
-        <div class="meta">
-          <span class="badge">Windows</span>
-          <span class="badge">Installer (.msi)</span>
-          <span class="badge">Direct download</span>
-        </div>
+<div class="card">
+  <h2>Installer</h2>
+  <a class="btn" href="https://github.com/adampr0gram/Hacker-Toolbox/raw/main/HackerToolBox.msi" download>
+    Download MSI
+  </a>
 
-        <p class="warning">If SmartScreen warns you, verify the checksum below and proceed only if it matches.</p>
+  <div class="meta">
+    <span class="badge">Windows</span>
+    <span class="badge">Installer (.msi)</span>
+    <span class="badge">Direct download</span>
+  </div>
+
+  <p class="warning">If SmartScreen warns you, verify the checksum below and proceed only if it matches.</p>
+  
 
         <h2>Verify integrity</h2>
         <pre>CertUtil -hashfile HackerToolBox.msi SHA256</pre>
@@ -162,3 +157,4 @@ Thanks for catching that — let me finish the full code properly so you have a 
 
   <footer class="container">
     <div>© <span
+
