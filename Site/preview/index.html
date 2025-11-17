@@ -25,6 +25,12 @@
     .btn.ready:hover { background:#00e695; }
     .btn.loading { background:var(--disabled); color:#ccc; cursor:not-allowed; }
     pre { background:#0b111a; border:1px solid #162234; border-radius:8px; padding:12px; color:#cde1ff; overflow:auto; }
+    .menu button {
+      display:block; width:100%; margin:8px 0; padding:10px;
+      background:#00d084; border:none; border-radius:6px;
+      cursor:pointer; font-weight:600;
+    }
+    .menu button:hover { background:#00e695; }
   </style>
 </head>
 <body>
@@ -70,7 +76,7 @@ await micropip.install("cryptography")
           "port_scanner.py"
         ];
         for (let f of files) {
-          const url = "https://raw.githubusercontent.com/adampr0gram/Hacker-Toolbox/main/Hacker%20ToolBox/" + f;
+          const url = "https://raw.githubusercontent.com/adampr0gram/Hacker-Toolbox/main/Site/preview/" + f;
           const resp = await fetch(url);
           if (resp.ok) {
             const code = await resp.text();
