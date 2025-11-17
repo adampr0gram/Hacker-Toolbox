@@ -18,11 +18,14 @@ def run_tool(tool_func, name):
 def show_menu():
     container = document.getElementById("output")
     container.textContent = ""  # clear previous output
+
     menu_div = document.createElement("div")
     menu_div.className = "menu"
+
     title = document.createElement("h2")
     title.innerHTML = "Hacker Toolbox"
     menu_div.appendChild(title)
+
     for key, (name, func) in TOOLS.items():
         btn = document.createElement("button")
         btn.innerHTML = f"{key}. {name}"
@@ -30,6 +33,7 @@ def show_menu():
             run_tool(func, name)
         btn.addEventListener("click", handler)
         menu_div.appendChild(btn)
+
     container.appendChild(menu_div)
 
 show_menu()
